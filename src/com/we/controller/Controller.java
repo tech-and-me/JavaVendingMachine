@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import com.we.dao.AuditDAO;
+import com.we.dao.ItemDAO;
 import com.we.model.item.Item;
 import com.we.service.IService;
 import com.we.service.Service;
@@ -12,10 +14,9 @@ import com.we.utilities.InputUtilities;
 public class Controller {
 	public static void main(String[] args) {
 		File inventoryFile = new File("C:\\C353\\InventoryRecords.txt");
-		HashMap<Integer, Item> items = new HashMap<>(); //temp item list
-		IService service = new Service(inventoryFile,items);
+		IService service = new Service();
 
-		service.loadingInventory(inventoryFile,items);
+		service.loadingInventory(inventoryFile);
 		
 		boolean readyToExit = false;
 		Scanner scanner = new Scanner(System.in);
@@ -38,6 +39,7 @@ public class Controller {
 				break;
 			case "3": // Exit
 				service.writeInventory(inventoryFile);
+				service.viewAuditLog();
 				System.out.println("Goodbye!");
 				scanner.close();
 				readyToExit = true;

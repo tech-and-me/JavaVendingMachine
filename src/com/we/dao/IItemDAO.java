@@ -9,7 +9,6 @@ import com.we.model.item.Item;
 public interface IItemDAO {
 	void addDefaultItems();
 	void addItemToInventory(Item item);
-	void viewInventory();
-	void loadingInventory(File filename);
+	Map<Integer, Item> loadingInventory(File filename);
 	void writeInventoryToFile(File filename);
 }
