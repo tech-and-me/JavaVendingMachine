@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Map;
-import java.util.Scanner;
+
 
 import com.we.dao.IItemDAO;
 import com.we.dao.ItemDAO;
@@ -14,6 +14,7 @@ import com.we.exception.ItemOutOfStockException;
 import com.we.model.item.Item;
 import com.we.utilities.Change;
 import com.we.utilities.Change.ChangeType;
+import com.we.utilities.InputUtilities;
 
 public class Service implements IService, Serializable {
 	private Map<Integer,Item> items; //temporary storage
@@ -53,9 +54,7 @@ public class Service implements IService, Serializable {
 	
 	@Override
 	public void topUp() {
-		Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the amount to top up: ");
-        BigDecimal amount = scanner.nextBigDecimal();
+        BigDecimal amount = InputUtilities.getInputAsBigDecimal("Amount", "Enter the amount to top up:");
         balance = balance.add(amount);
         System.out.println("Top-up successful. Current balance: $" + balance);
 	}
@@ -73,13 +72,10 @@ public class Service implements IService, Serializable {
 	            System.out.println("You have zero balance. Please top up first.");
 	            return;
 	        }
-		Scanner scanner = new Scanner(System.in); 
 	    System.out.println("Items available for purchase:");
 	    displayAvailableItems();
 
-	    System.out.println("Enter the item code: ");
-	    int itemCode = scanner.nextInt();
-
+	    int itemCode = InputUtilities.getInputAsInteger("Item code" , "Enter the item code :");
 	    try {
 	        checkItemCodeIsValid(itemCode);
 	        checkItemInStock(itemCode);

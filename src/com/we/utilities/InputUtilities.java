@@ -1,5 +1,6 @@
 package com.we.utilities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -91,6 +92,32 @@ public class InputUtilities {
 
 	    return input;
 	}
+	
+	 public static BigDecimal getInputAsBigDecimal(String varName, String prompt) {
+	        BigDecimal input = BigDecimal.ZERO;
+	        boolean validInput = false;
+
+	        do {
+	            try {
+	                System.out.println(prompt);
+	                String inputString = scanner.nextLine();
+	                input = new BigDecimal(inputString);
+	                validInput = true;
+	            } catch (NumberFormatException e) {
+	                System.out.println(varName + " must be a valid number.");
+	            } catch (Exception e) {
+	                System.out.println("Oops! Something went wrong. ");
+	                return BigDecimal.ZERO;
+	            }
+
+	        } while (!validInput);
+
+	        return input;
+	    }
+	
+	
+	
+	
 	
 	public static LocalDate getInputAsDate(String varName, String prompt) {
         boolean validInput = false;

@@ -29,8 +29,6 @@ public class Controller {
 
 			String option = scanner.nextLine();
 			
-			String username = "";
-			String password = "";
 			switch(option) {
 			case "1": // Top up 
 				service.topUp();
