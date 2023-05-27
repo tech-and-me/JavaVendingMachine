@@ -1,14 +1,15 @@
 package com.we.model.item;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Item implements Serializable{
 	private int code;
 	private String name;
-	private double cost;
+	private BigDecimal cost;
 	private int quantity;
 	
-	public Item(int code,String name, double cost, int quantity) {
+	public Item(int code,String name, BigDecimal cost, int quantity) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -32,11 +33,11 @@ public class Item implements Serializable{
 		this.name = name;
 	}
 
-	public double getCost() {
+	public BigDecimal getCost() {
 		return cost;
 	}
 
-	public void setCost(double cost) {
+	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
 
@@ -50,8 +51,10 @@ public class Item implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Item [name=" + name + ", cost=" + cost + ", quantity=" + quantity + "]";
+		return "code=" + code + ", name=" + name + ", cost=" + cost;
 	}
+
+	
 	
 	
 }

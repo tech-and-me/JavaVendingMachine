@@ -10,10 +10,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.we.exception.NoItemInventoryException;
+import com.we.exception.ItemOutOfStockException;
 import com.we.model.item.Item;
 
 public class ItemDAO implements IItemDAO, Serializable{
@@ -40,9 +41,12 @@ public class ItemDAO implements IItemDAO, Serializable{
 	
 	@Override
 	public void addDefaultItems() {
-        this.items.put(100, new Item(100,"Coke", 1.25, 5));
-        this.items.put(101, new Item(101,"Chips", 0.75, 10));
-        this.items.put(102, new Item(102,"Chocolate", 1.00, 3));
+		this.items.put(100, new Item(100, "Coke", new BigDecimal("1.25"), 2));
+	    this.items.put(101, new Item(101, "Chips", new BigDecimal("0.75"), 4));
+	    this.items.put(102, new Item(102, "Chocolate", new BigDecimal("1.00"), 1));
+	    this.items.put(103, new Item(103, "Water", new BigDecimal("1.00"), 3));
+	    this.items.put(106, new Item(106, "Lemon Ice Tea", new BigDecimal("1.75"), 3));
+	    this.items.put(107, new Item(107, "Ice Coffee", new BigDecimal("2.00"), 2));
     }
 
 	@Override
@@ -136,4 +140,6 @@ public class ItemDAO implements IItemDAO, Serializable{
 		}
 	}
 
+
+	
 }

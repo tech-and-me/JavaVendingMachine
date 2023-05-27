@@ -20,9 +20,9 @@ public class Controller {
 		boolean readyToExit = false;
 		Scanner scanner = new Scanner(System.in);
 		while(!readyToExit) {
-			System.out.println("-------------------------");
+			System.out.println("\n========================================================");
 			System.out.println("Vendng Machine Application");
-			System.out.println("-------------------------");
+			System.out.println("========================================================");
 			System.out.println("1 - Top up");
 			System.out.println("2 - Purchase item");
 			System.out.println("3 - Exit");
